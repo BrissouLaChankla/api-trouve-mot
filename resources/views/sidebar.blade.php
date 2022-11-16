@@ -1,4 +1,4 @@
-<div class="d-flex flex-column shadow-sm top-0 left-0 flex-shrink-0 p-3 bg-white vh-100 position-fixed" style="width: 280px;">
+<div class="d-flex flex-column shadow-sm top-0 left-0 flex-shrink-0 p-3 bg-white vh-100 position-fixed sidebar" style="width: 280px;">
     <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
         <img src="{{asset('img/logo.webp')}}" width="50" class="logo me-2"/>
       <span class="h6 text-muted m-0 fs-5 fw-semibold">Trouve-mot</span>
