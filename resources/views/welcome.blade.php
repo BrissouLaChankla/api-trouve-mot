@@ -212,7 +212,7 @@
 
 
 
-                        <div class="py-5 bg-light" id="random">
+                        <div class="py-5 bg-light" id="size">
                             <div class="container-fluid">
                                 <div class="row">
                                     <h2 class="mb-4">Récupérer des mots en fonction de leur longueur</h2>

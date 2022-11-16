@@ -8,7 +8,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
     const toggleMobileMenu = () => {
         burger.classList.toggle("open");
         sidebar.classList.toggle("opened");
-        backdrop.classList.toggle("d-none");
+        if(window.innerWidth < 768) {
+            backdrop.classList.toggle("d-none")
+        }
+        
     }
 
     backdrop.addEventListener("click", () => {
