@@ -34,19 +34,28 @@
     @vite(['resources/css/app.css', 'resources/scss/app.scss', 'resources/js/app.js'])
 </head>
 <body class="antialiased">
-
+<div id="backdrop" class="d-none"></div>
     @include('sidebar')
+    
     <div id="app">
+        <header class="border-bottom py-2 position-sticky bg-white top-0 left-0 w-100  align-items-center justify-content-between px-3">
+            <a href="/" class="d-flex align-items-center  link-dark text-decoration-none ">
+                <img src="{{asset('img/logo.webp')}}" width="50" class="logo me-2"/>
+              <span class="h6 text-muted m-0 fs-5 fw-semibold">Trouve-mot</span>
+            </a>
+
+            <div id="burger" class="">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </header>
+    
         <div class="container-fluid my-5">
-            <div class="row">
-                <div class="col-md-6">
                     <h1>API gratuite de mots aléatoires</h1>
                     <p>Si pour un projet vous avez besoin de récupérer des mots triés ou non par catégories, vous êtes au bon endroit !</p>
                     <p>Vous retrouverez ici <strong>{{$wordsCount}}</strong> mots français parmis <strong>{{$categoriesCount}}</strong> catégories différentes.</p>
-                    {{-- For example, <code>&lt;section&gt;</code> should be wrapped as inline.
-                <pre><code class="break-words"><a class="no-underline" href="/api/random/">https://api-mots.test/api/random</a></code></pre> --}}
-                </div>
-            </div>
+                    
         </div>
 
 
@@ -54,7 +63,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <h2 class="mb-4">Récupérer des mots aléatoires</h2>
-                    <div class="col-md-6 pe-5">
+                    <div class="col-xxl-6 pe-xxl-5">
                         <h6>Endpoints :</h6>
                         <pre class="white"><code><a href="https://trouve-mot.fr/api/random">https://trouve-mot.fr/api/random</a>     <small class="text-success">// Génère 1 mot aléatoire</small>   </code>
 <code><a href="https://trouve-mot.fr/api/random/10">https://trouve-mot.fr/api/random/10</a>  <small class="text-success">// Génère 10 mots aléatoires</small></code></pre>
@@ -66,7 +75,7 @@
 
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-xxl-6">
                         <h6>Output :</h6>
                         <pre class="white" id="output1"><code></code></pre>
                     </div>
@@ -78,7 +87,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <h2 class="mb-4" id="random">Récupérer des mots commençant par...</h2>
-                    <div class="col-md-6 pe-5">
+                    <div class="col-xxl-6 pe-xxl-5">
                         <h6>Endpoints :</h6>
                         <pre class="light"><code><a href="https://trouve-mot.fr/api/startwith/B">https://trouve-mot.fr/api/startwith/B</a>     <small class="text-success">// Génère 1 mot aléatoire commençant par B</small>   </code>
 <code><a href="https://trouve-mot.fr/api/startwith/B/10">https://trouve-mot.fr/api/startwith/B/10</a>  <small class="text-success">// Génère 10 mots aléatoires commençant par B</small></code></pre>
@@ -90,7 +99,7 @@
 
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-xxl-6">
                         <h6>Output :</h6>
                         <pre class="light" id="output2"><code></code></pre>
                     </div>
@@ -103,14 +112,16 @@
             <div class="container-fluid">
                 <div class="row">
                     <div>
-                        <h2 class="mb-4 d-inline-block" id="random">Récupérer des mots par catégorie</h2>
+                        <h2 class=" d-inline-block me-4 mb-0" id="random">Récupérer des mots par catégorie</h2>
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary btn-sm ms-4" style="margin-bottom:10px" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            Voir les catégories
-                        </button>
+                        <div class="py-4 d-inline-block">
+                            <button type="button" class="btn btn-primary btn-sm" style="margin-bottom:10px" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                Voir les catégories
+                            </button>
+                        </div>
                     </div>
 
-                    <div class="col-md-6 pe-5">
+                    <div class="col-xxl-6 pe-xxl-5">
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg">
@@ -163,7 +174,7 @@
 
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-xxl-6">
                                         <h6>Output :</h6>
                                         <pre class="white" id="output3"><code></code></pre>
                                     </div>
@@ -178,7 +189,7 @@
                             <div class="container-fluid">
                                 <div class="row">
                                     <h2 class="mb-4" id="random">Récupérer le mot du jour</h2>
-                                    <div class="col-md-6 pe-5">
+                                    <div class="col-xxl-6 pe-xxl-5">
                                         <h6>Endpoints :</h6>
                                         <pre class="light"><a href="https://trouve-mot.fr/api/daily">https://trouve-mot.fr/api/daily</a>
 <a href="https://trouve-mot.fr/api/weekly">https://trouve-mot.fr/api/weekly</a>
@@ -191,9 +202,42 @@
 
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-xxl-6">
                                         <h6>Output :</h6>
                                         <pre class="light" id="output4"><code></code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="py-5 bg-light" id="random">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <h2 class="mb-4">Récupérer des mots en fonction de leur longueur</h2>
+                                    <div class="col-xxl-6 pe-xxl-5">
+                                        <h6>Endpoints :</h6>
+                                        <pre class="white"><code><a href="https://trouve-mot.fr/api/size/5">https://trouve-mot.fr/api/size/5</a>      <small class="text-success">// Génère 1 mot aléatoire de 5 caractères</small>   </code>
+<code><a href="https://trouve-mot.fr/api/size/5/10">https://trouve-mot.fr/api/size/5/10</a></code>
+
+<code><a href="https://trouve-mot.fr/api/sizemin/6">https://trouve-mot.fr/api/sizemin/6</a>   <small class="text-success">// Génère 1 mot aléatoire de minimum 6 caractères</small></code>
+<code><a href="https://trouve-mot.fr/api/sizemin/6/10">https://trouve-mot.fr/api/sizemin/6/10</a></code>
+
+<code><a href="https://trouve-mot.fr/api/sizemax/4">https://trouve-mot.fr/api/sizemax/4</a>   <small class="text-success">// Génère 1 mot aléatoire de maximum 4 caractères</small>   </code>
+<code><a href="https://trouve-mot.fr/api/sizemax/4/10">https://trouve-mot.fr/api/sizemax/4/10</a> </code>
+</pre>
+                                        <h6>Exemple :</h6>
+                                        <pre class="dark">
+<span class="function">fetch</span><span class="punctuation">("</span><span class="string">https://trouve-mot.fr/api/sizemin/6/2</span><span class="punctuation">")</span>
+    <span class="punctuation">.</span><span class="function">then</span><span class="punctuation">((</span>response<span class="punctuation">)</span> => response.<span class="function">json</span><span class="punctuation">())</span>
+    <span class="punctuation">.</span><span class="function">then</span><span class="punctuation">((</span>words<span class="punctuation">)</span> => <span class="console">console</span><span class="punctuation">.</span><span class="function">log</span><span class="punctuation">(</span>words<span class="punctuation">))</span></pre>
+                
+                                    </div>
+                
+                                    <div class="col-xxl-6">
+                                        <h6>Output :</h6>
+                                        <pre class="white" id="output5"><code></code></pre>
                                     </div>
                                 </div>
                             </div>
@@ -246,6 +290,15 @@
                                 }
                                 const words4 = await response4.json();
                                 document.getElementById("output4").innerHTML = JSON.stringify(words4, undefined, 2);
+
+
+                                const response5 = await fetch("https://trouve-mot.fr/api/sizemin/6/2");
+                                if (!response5.ok) {
+                                    const msg = `Il y a eu une erreur`;
+                                    throw new Error(msg);
+                                }
+                                const words5 = await response5.json();
+                                document.getElementById("output5").innerHTML = JSON.stringify(words5, undefined, 2);
 
                             }
 

@@ -72,12 +72,28 @@ class WordController extends Controller
         return response()->json($result);
     }
 
-    public function getWordsBySize(Request $request, $size, $number = 1)
-    {
-        $words = Word::whereRaw('LENGTH(name) <= '.$size)->inRandomOrder()->take($number)->get();
-        return response()->json($words);
-    }
 
+    public function getWordsBySize(Request $request, $parameter, $size, $number = 1)
+    {
+
+        if($parameter == "sizemax") {
+            $words = Word::whereRaw('LENGTH(name) <= '.$size)->inRandomOrder()->take($number)->get();
+        } elseif($parameter == "sizemin") {
+            $words = Word::whereRaw('LENGTH(name) >= '.$size)->inRandomOrder()->take($number)->get();
+        } elseif(($parameter == "size")) {
+            $words = Word::whereRaw('LENGTH(name) = '.$size)->inRandomOrder()->take($number)->get();
+        } else {
+            abort(404);
+        }
+
+         $result = array();
+
+        foreach($words as $word) {
+            array_push($result, ["name" => $word->name, "categorie" => $word->categorie->name]);    
+        }
+
+        return response()->json($result);
+    }
 
 
   
