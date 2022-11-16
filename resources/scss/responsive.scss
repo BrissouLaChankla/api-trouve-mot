@@ -1,0 +1,39 @@
+.sidebar {
+    transform: translateX(-100%);
+    z-index: 50000;
+    transition: all .3s ease;
+
+    &.opened {
+        transform: translateX(0);
+    }
+}
+
+.container-fluid {
+    padding: 0 1.2rem;
+  }
+
+#app {
+    margin-left: 0;
+}
+
+header {
+    display: flex;
+}
+
+@media only screen and (min-width: 768px) {
+    .container-fluid {
+        padding: 0 2.5rem;
+      }
+
+    #app {
+        margin-left: 280px;
+    }
+
+    .sidebar {
+        transform: translateX(0);
+    }
+
+    header {
+        display: none !important;
+    }
+}
