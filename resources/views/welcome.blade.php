@@ -193,7 +193,7 @@
                                         <h6>Endpoints :</h6>
                                         <pre class="light"><a href="https://trouve-mot.fr/api/daily">https://trouve-mot.fr/api/daily</a>
 <a href="https://trouve-mot.fr/api/weekly">https://trouve-mot.fr/api/weekly</a>
-<a href="https://trouve-mot.fr/api/montly">https://trouve-mot.fr/api/monthly</a></pre>
+<a href="https://trouve-mot.fr/api/monthly">https://trouve-mot.fr/api/monthly</a></pre>
                                         <h6>Exemple :</h6>
                                         <pre class="dark">
 <span class="function">fetch</span><span class="punctuation">("</span><span class="string">https://trouve-mot.fr/api/daily</span><span class="punctuation">")</span>
