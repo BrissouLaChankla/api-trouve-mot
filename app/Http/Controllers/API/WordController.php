@@ -77,11 +77,11 @@ class WordController extends Controller
     {
 
         if($parameter == "sizemax") {
-            $words = Word::whereRaw('LENGTH(name) <= '.$size)->inRandomOrder()->take($number)->get();
+            $words = Word::whereRaw('CHAR_LENGTH(name) <= '.$size)->inRandomOrder()->take($number)->get();
         } elseif($parameter == "sizemin") {
-            $words = Word::whereRaw('LENGTH(name) >= '.$size)->inRandomOrder()->take($number)->get();
+            $words = Word::whereRaw('CHAR_LENGTH(name) >= '.$size)->inRandomOrder()->take($number)->get();
         } elseif(($parameter == "size")) {
-            $words = Word::whereRaw('LENGTH(name) = '.$size)->inRandomOrder()->take($number)->get();
+            $words = Word::whereRaw('CHAR_LENGTH(name) = '.$size)->inRandomOrder()->take($number)->get();
         } else {
             abort(404);
         }
