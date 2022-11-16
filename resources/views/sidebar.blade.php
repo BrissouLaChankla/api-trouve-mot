@@ -13,6 +13,7 @@
             <li><a href="#random" class="link-dark rounded">Aléatoire</a></li>
             <li><a href="#startwith" class="link-dark rounded">Commençant par _</a></li>
             <li><a href="#belongsto" class="link-dark rounded">Appartenant à la catégorie _</a></li>
+            <li><a href="#size" class="link-dark rounded">Selon sa longueur</a></li>
             <li><a href="#daily" class="link-dark rounded">Du jour / semaine / mois</a></li>
           </ul>
         </div>

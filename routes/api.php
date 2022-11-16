@@ -26,7 +26,7 @@ Route::controller(WordController::class)->group(function () {
     Route::get('/weekly', 'getWeeklyWord');
     Route::get('/montly', 'getMonthlyWord');
     // Route::get('/all', 'getAllWords');
-    Route::get('/size/{size}/{number?}', 'getWordsBySize');
+    Route::get('/{parameter}/{sizenb}/{number?}', 'getWordsBySize');
 });
 
 Route::controller(CategorieController::class)->group(function () {

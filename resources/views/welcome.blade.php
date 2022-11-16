@@ -211,6 +211,39 @@
                         </div>
 
 
+
+                        <div class="py-5 bg-light" id="random">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <h2 class="mb-4">Récupérer des mots en fonction de leur longueur</h2>
+                                    <div class="col-xxl-6 pe-xxl-5">
+                                        <h6>Endpoints :</h6>
+                                        <pre class="white"><code><a href="https://trouve-mot.fr/api/size/5">https://trouve-mot.fr/api/size/5</a>      <small class="text-success">// Génère 1 mot aléatoire de 5 caractères</small>   </code>
+<code><a href="https://trouve-mot.fr/api/size/5/10">https://trouve-mot.fr/api/size/5/10</a></code>
+
+<code><a href="https://trouve-mot.fr/api/sizemin/6">https://trouve-mot.fr/api/sizemin/6</a>   <small class="text-success">// Génère 1 mot aléatoire de minimum 6 caractères</small></code>
+<code><a href="https://trouve-mot.fr/api/sizemin/6/10">https://trouve-mot.fr/api/sizemin/6/10</a></code>
+
+<code><a href="https://trouve-mot.fr/api/sizemax/4">https://trouve-mot.fr/api/sizemax/4</a>   <small class="text-success">// Génère 1 mot aléatoire de maximum 4 caractères</small>   </code>
+<code><a href="https://trouve-mot.fr/api/sizemax/4/10">https://trouve-mot.fr/api/sizemax/4/10</a> </code>
+</pre>
+                                        <h6>Exemple :</h6>
+                                        <pre class="dark">
+<span class="function">fetch</span><span class="punctuation">("</span><span class="string">https://trouve-mot.fr/api/sizemin/6/2</span><span class="punctuation">")</span>
+    <span class="punctuation">.</span><span class="function">then</span><span class="punctuation">((</span>response<span class="punctuation">)</span> => response.<span class="function">json</span><span class="punctuation">())</span>
+    <span class="punctuation">.</span><span class="function">then</span><span class="punctuation">((</span>words<span class="punctuation">)</span> => <span class="console">console</span><span class="punctuation">.</span><span class="function">log</span><span class="punctuation">(</span>words<span class="punctuation">))</span></pre>
+                
+                                    </div>
+                
+                                    <div class="col-xxl-6">
+                                        <h6>Output :</h6>
+                                        <pre class="white" id="output5"><code></code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
 <footer class="bg-white border-top text-center py-3 text-muted">
     <small>Pour toute question : <a target="_blank" href="https://brice-eliasse.com">Brice Eliasse</a></small>
 </footer>
@@ -257,6 +290,15 @@
                                 }
                                 const words4 = await response4.json();
                                 document.getElementById("output4").innerHTML = JSON.stringify(words4, undefined, 2);
+
+
+                                const response5 = await fetch("https://trouve-mot.fr/api/sizemin/6/2");
+                                if (!response5.ok) {
+                                    const msg = `Il y a eu une erreur`;
+                                    throw new Error(msg);
+                                }
+                                const words5 = await response5.json();
+                                document.getElementById("output5").innerHTML = JSON.stringify(words5, undefined, 2);
 
                             }
 
