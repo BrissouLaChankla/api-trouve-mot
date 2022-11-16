@@ -16,8 +16,13 @@ use App\Http\Controllers\API\CategorieController;
 |
 */
 
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
 
-
+Route::controller(CategorieController::class)->group(function () {
+    Route::get('/categorie/{id_categorie}/{number?}', 'getWordsByCategorie');
+});
 
 Route::controller(WordController::class)->group(function () {
     Route::get('/random/{number?}', 'getRandomWords');
@@ -29,11 +34,5 @@ Route::controller(WordController::class)->group(function () {
     Route::get('/{parameter}/{sizenb}/{number?}', 'getWordsBySize');
 });
 
-Route::controller(CategorieController::class)->group(function () {
-    Route::get('/categorie/{id_categorie}/{number?}', 'getWordsByCategorie');
-});
 
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
