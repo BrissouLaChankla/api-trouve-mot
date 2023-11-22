@@ -31,9 +31,9 @@ class dailyWord extends Command
         $dailyword = Word::where('is_daily_word', '=', 1)->first();
         $dailyword->update(['is_daily_word' => 0]);
 
+
         // Setup new daily word
         $newdailyword = Word::inRandomOrder()->first();
         $newdailyword->update(['is_daily_word' => 1]);
-        return "gg";
     }
 }

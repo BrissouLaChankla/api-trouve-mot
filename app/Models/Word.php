@@ -12,6 +12,9 @@ class Word extends Model
     protected $fillable = [
         'name',
         'categorie_id',
+        'is_daily_word',
+        'is_weekly_word',
+        'is_monthly_word'
     ];
 
     public function categorie() {

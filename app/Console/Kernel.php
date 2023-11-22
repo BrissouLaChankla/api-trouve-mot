@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\DB;
 
 class Kernel extends ConsoleKernel
 {
@@ -15,9 +16,19 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('dailyword:update')->daily();
-        $schedule->command('weeklyword:update')->weekly();
-        $schedule->command('monthlyword:update')->monthly();
+        $schedule->call(function () {
+            $dailyword = DB::table('words')->where('is_daily_word', '=', 1)->first();
+            $dailyword->update(['is_daily_word' => 0]);
+    
+    
+            // Setup new daily word
+            $newdailyword = DB::table('words')->inRandomOrder()->first();
+            $newdailyword->update(['is_daily_word' => 1]);
+            info('DailyWord changed');
+        })->everyMinute();
+        // $schedule->command('dailyword:update')->daily();
+        // $schedule->command('weeklyword:update')->weekly();
+        // $schedule->command('monthlyword:update')->monthly();
     }
 
     /**

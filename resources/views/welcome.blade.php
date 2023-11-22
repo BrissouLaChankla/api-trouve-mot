@@ -42,6 +42,8 @@
 
     </style>
     @vite(['resources/css/app.css', 'resources/scss/app.scss', 'resources/js/app.js'])
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4245635349326760"
+     crossorigin="anonymous"></script>
 </head>
 <body class="antialiased">
 <div id="backdrop" class="d-none"></div>
