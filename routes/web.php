@@ -26,3 +26,7 @@ Route::get('/', function () {
         "categoriesCount" => $categoriesCount,
     ]);
 });
+
+Route::get('/confidentials', function () {
+    return view('confidentials');
+});
