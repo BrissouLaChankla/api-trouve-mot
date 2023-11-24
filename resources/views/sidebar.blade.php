@@ -18,31 +18,10 @@
           </ul>
         </div>
       </li>
-      <li class="mb-1">
-        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#categories-collapse" aria-expanded="false">
-          Catégorie
-        </button>
-        <div class="collapse" id="categories-collapse" style="">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark rounded disabled"><em class="text-muted">A venir...</em></a></li>
-            
-          </ul>
-        </div>
-      </li>
+     
       <li class="border-top my-3"></li>
-      {{-- <li class="mb-1">
-        <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-          Contact
-        </button>
-        <div class="collapse" id="account-collapse" style="">
-          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark rounded">New...</a></li>
-            <li><a href="#" class="link-dark rounded">Profile</a></li>
-            <li><a href="#" class="link-dark rounded">Settings</a></li>
-            <li><a href="#" class="link-dark rounded">Sign out</a></li>
-          </ul>
-        </div>
-      </li> --}}
+      
+
     </ul>
     <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="brissou" data-color="#5F7FFF" data-emoji="" data-font="Lato" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script>
   </div>

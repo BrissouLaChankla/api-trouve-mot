@@ -17,18 +17,39 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->call(function () {
-            $dailyword = DB::table('words')->where('is_daily_word', '=', 1)->first();
+            
+            $dailyword = DB::table('words')->where('is_daily_word', '=', 1)->limit(1);
             $dailyword->update(['is_daily_word' => 0]);
-    
-    
+            
+            
             // Setup new daily word
-            $newdailyword = DB::table('words')->inRandomOrder()->first();
+            $newdailyword = DB::table('words')->inRandomOrder()->limit(1);
             $newdailyword->update(['is_daily_word' => 1]);
             info('DailyWord changed');
-        })->everyMinute();
-        // $schedule->command('dailyword:update')->daily();
-        // $schedule->command('weeklyword:update')->weekly();
-        // $schedule->command('monthlyword:update')->monthly();
+        })->daily();
+
+        $schedule->call(function () {
+            
+            $weeklyword = DB::table('words')->where('is_weekly_word', '=', 1)->limit(1);
+            $weeklyword->update(['is_weekly_word' => 0]);
+    
+            // Setup new weekly word
+            $newweeklyword = DB::table('words')->inRandomOrder()->limit(1);
+            $newweeklyword->update(['is_weekly_word' => 1]);
+            info('Weekly changed');
+        })->weekly();
+
+
+        $schedule->call(function () {
+            
+            $monthlyword = DB::table('words')->where('is_monthly_word', '=', 1)->limit(1);
+        $monthlyword->update(['is_monthly_word' => 0]);
+
+        // Setup new monthly word
+        $newmonthlyword = DB::table('words')->inRandomOrder()->limit(1);
+        $newmonthlyword->update(['is_monthly_word' => 1]);
+            info('Montly changed');
+        })->monthly();
     }
 
     /**
