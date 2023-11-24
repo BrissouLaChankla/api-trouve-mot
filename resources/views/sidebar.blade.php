@@ -1,3 +1,4 @@
+
 <div class="d-flex flex-column shadow-sm top-0 left-0 flex-shrink-0 p-3 bg-white vh-100 position-fixed sidebar" style="width: 280px;">
     <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
         <img src="{{asset('img/logo.webp')}}" width="50" class="logo me-2"/>
@@ -20,8 +21,19 @@
       </li>
      
       <li class="border-top my-3"></li>
-      
+      <!-- Sidebar -->
+<ins class="adsbygoogle"
+style="display:block"
+data-ad-client="ca-pub-4245635349326760"
+data-ad-slot="3984419990"
+data-ad-format="auto"
+data-full-width-responsive="true"></ins>
+
 
     </ul>
     <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="brissou" data-color="#5F7FFF" data-emoji="" data-font="Lato" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script>
   </div>
+
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
