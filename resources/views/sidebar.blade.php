@@ -21,6 +21,12 @@
       </li>
      
       <li class="border-top my-3"></li>
+      
+      <li class="mb-1">
+        <a href="{{ route('blog.index') }}" class="btn btn-toggle align-items-center rounded w-100 text-start">
+          Blog
+        </a>
+      </li>
       <!-- Sidebar -->
 <ins class="adsbygoogle"
 style="display:block"

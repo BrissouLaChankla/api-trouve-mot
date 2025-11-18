@@ -30,3 +30,7 @@ Route::get('/', function () {
 Route::get('/confidentials', function () {
     return view('confidentials');
 });
+
+// Blog routes
+Route::get('/blog', [App\Http\Controllers\BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/{slug}', [App\Http\Controllers\BlogController::class, 'show'])->name('blog.show');
