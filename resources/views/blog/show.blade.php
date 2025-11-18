@@ -17,6 +17,7 @@
     <meta name="description" content="{{ $articleData['meta_description'] ?? 'Découvrez cet article sur les API linguistiques et la génération de mots' }}" />
     <meta name="keywords" content="{{ isset($articleData['tags']) ? implode(', ', $articleData['tags']) : 'API linguistiques, génération de mots' }}" />
     <link rel="canonical" href="{{ url('/blog/' . $articleData['slug']) }}" />
+    <link rel="sitemap" type="application/xml" href="{{ url('/sitemap.xml') }}" />
     
     <!-- Open Graph -->
     <meta property="og:title" content="{{ $articleData['title'] }}" />

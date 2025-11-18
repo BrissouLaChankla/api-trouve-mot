@@ -16,6 +16,8 @@
 
     <title>API Trouve-mot - Génère des mots aléatoires gratuitement !</title>
     <meta name="description" content="API Trouve-mot permet de générer des mots aléatoires et de leur catégorie. C'est totalement gratuit !" />
+    <link rel="canonical" href="{{ url('/') }}" />
+    <link rel="sitemap" type="application/xml" href="{{ url('/sitemap.xml') }}" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">

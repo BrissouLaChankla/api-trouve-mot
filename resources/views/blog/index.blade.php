@@ -17,6 +17,7 @@
     <meta name="description" content="Découvrez nos articles sur les API linguistiques, la génération de mots aléatoires, l'éducation numérique et bien plus encore. Conseils, guides et actualités pour vos projets." />
     <meta name="keywords" content="API linguistiques, génération de mots, éducation numérique, API français, mots aléatoires" />
     <link rel="canonical" href="{{ url('/blog') }}" />
+    <link rel="sitemap" type="application/xml" href="{{ url('/sitemap.xml') }}" />
     
     <!-- Open Graph -->
     <meta property="og:title" content="Blog - API Trouve-mot" />
@@ -111,7 +112,7 @@
             </div>
         </header>
     
-        <div class="container-fluid my-5 px-3">
+        <div class="container my-5">
             <div class="row">
                 <div class="col-12">
                     <h1 class="mb-3">Blog</h1>
@@ -121,7 +122,7 @@
 
             <div class="row g-4">
                 @forelse($articles as $article)
-                    <div class="col-md-6 col-lg-3">
+                    <div class="col-md-6 col-lg-4">
                         <article class="card article-card shadow-sm h-100">
                             @if(isset($article['image']) && $article['image'])
                                 <a href="{{ route('blog.show', $article['slug']) }}">

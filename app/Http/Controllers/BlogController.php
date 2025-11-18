@@ -209,5 +209,77 @@ class BlogController extends Controller
         
         return view('blog.show', compact('articleData', 'featuredArticles'));
     }
+
+    public function sitemap()
+    {
+        $token = $this->getApiToken();
+        // Utiliser l'URL de production ou celle configurée
+        $baseUrl = env('APP_URL', 'https://trouve-mot.fr');
+        // S'assurer que l'URL ne se termine pas par un slash
+        $baseUrl = rtrim($baseUrl, '/');
+        
+        // Récupérer tous les articles (sans pagination)
+        $cacheKey = "blog_sitemap_articles";
+        
+        $articles = Cache::remember($cacheKey, 3600, function () use ($token) {
+            try {
+                $response = Http::timeout(10)->get('https://beatrice.app/api/articles', [
+                    'token' => $token,
+                    'limit' => 1000 // Récupérer un maximum d'articles
+                ]);
+                
+                if ($response->successful()) {
+                    $data = $response->json();
+                    return $data['data'] ?? [];
+                }
+                
+                return [];
+            } catch (\Exception $e) {
+                return [];
+            }
+        });
+        
+        $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
+        $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
+        
+        // Page d'accueil
+        $xml .= '  <url>' . "\n";
+        $xml .= '    <loc>' . $baseUrl . '</loc>' . "\n";
+        $xml .= '    <changefreq>weekly</changefreq>' . "\n";
+        $xml .= '    <priority>1.0</priority>' . "\n";
+        $xml .= '  </url>' . "\n";
+        
+        // Page blog
+        $xml .= '  <url>' . "\n";
+        $xml .= '    <loc>' . $baseUrl . '/blog</loc>' . "\n";
+        $xml .= '    <changefreq>daily</changefreq>' . "\n";
+        $xml .= '    <priority>0.9</priority>' . "\n";
+        $xml .= '  </url>' . "\n";
+        
+        // Articles du blog
+        foreach ($articles as $article) {
+            if (isset($article['slug']) && isset($article['publishedAt'])) {
+                $xml .= '  <url>' . "\n";
+                $xml .= '    <loc>' . $baseUrl . '/blog/' . htmlspecialchars($article['slug'], ENT_XML1) . '</loc>' . "\n";
+                
+                // Date de dernière modification
+                if (isset($article['updatedAt'])) {
+                    $lastmod = date('Y-m-d', strtotime($article['updatedAt']));
+                } else {
+                    $lastmod = date('Y-m-d', strtotime($article['publishedAt']));
+                }
+                $xml .= '    <lastmod>' . $lastmod . '</lastmod>' . "\n";
+                
+                $xml .= '    <changefreq>weekly</changefreq>' . "\n";
+                $xml .= '    <priority>0.8</priority>' . "\n";
+                $xml .= '  </url>' . "\n";
+            }
+        }
+        
+        $xml .= '</urlset>';
+        
+        return response($xml, 200)
+            ->header('Content-Type', 'application/xml; charset=utf-8');
+    }
 }
 
